@@ -1,0 +1,18 @@
+services:
+  scheduler:
+    build: .
+    container_name: crypto_scheduler
+    command: python3 scheduler/run_pipeline.py
+    volumes:
+      - .:/app   # 👈 local sync
+
+  dashboard:
+    build: .
+    container_name: crypto_dashboard
+    command: python3 -m streamlit run dashboard/app.py --server.port=8501 --server.address=0.0.0.0
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app   # 👈 local sync
+    depends_on:
+      - scheduler
