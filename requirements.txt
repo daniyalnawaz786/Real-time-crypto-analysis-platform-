@@ -1,6 +1,9 @@
 requests
 pandas
-# sqlite3
 streamlit
 schedule
 plotly
+joblib
+scikit-learn
+numpy
+xgboost 
